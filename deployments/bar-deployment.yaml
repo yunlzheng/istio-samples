@@ -1,0 +1,35 @@
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    run: bar
+  name: bar
+spec:
+  ports:
+  - port: 8082
+    protocol: TCP
+    targetPort: 8082
+  selector:
+    run: bar
+  type: ClusterIP
+---
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    run: bar
+  name: bar
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: bar
+  template:
+    metadata:
+      labels:
+        run: bar
+    spec:
+      containers:
+      - image: betterdevlabs/bar:v1
+        imagePullPolicy: IfNotPresent
+        name: bar

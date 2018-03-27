@@ -1,0 +1,36 @@
+apiVersion: extensions/v1beta1
+kind: Deployment
+metadata:
+  labels:
+    run: frontend
+  name: frontend
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      run: frontend
+  template:
+    metadata:
+      labels:
+        run: frontend
+    spec:
+      containers:
+      - image: betterdevlabs/frontend
+        imagePullPolicy: Always
+        name: frontend
+---
+apiVersion: v1
+kind: Service
+metadata:
+  labels:
+    run: frontend
+  name: frontend
+spec:
+  ports:
+  - nodePort: 32076
+    port: 8080
+    protocol: TCP
+    targetPort: 8080
+  selector:
+    run: frontend
+  type: NodePort
