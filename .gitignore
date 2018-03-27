@@ -1,3 +1,11 @@
-*/.idea
-*/.gradle
-*/build
+frontend/.gradle
+foo/.gradle
+bar/.gradle
+
+foo/.idea
+bar/.idea
+frontend/.idea
+
+foo/build
+bar/build
+frontend/build
