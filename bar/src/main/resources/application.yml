@@ -1,0 +1,7 @@
+spring:
+  application:
+    name: bar
+    version: v2
+
+server:
+  port: 8082
